@@ -176,8 +176,12 @@ export function Generator({ t, initialMode = "text", lockedMode, initialPresetId
         const form = new FormData();
         form.append("file", await downscaleImage(file));
         const upload = await fetch("/api/upload", { method: "POST", body: form });
-        const uploaded = await upload.json();
-        if (!upload.ok) throw new Error(uploaded.error ?? t.errors.generic);
+        const uploadType = upload.headers.get("content-type") ?? "";
+        const uploaded = uploadType.includes("application/json") ? await upload.json() : null;
+        if (!upload.ok) {
+          throw new Error(uploaded?.error ?? `Upload service returned ${upload.status}. Please try again.`);
+        }
+        if (!uploaded?.path) throw new Error(t.errors.generic);
         sourcePath = uploaded.path;
       }
       const response = await fetch("/api/generate", {
@@ -185,8 +189,12 @@ export function Generator({ t, initialMode = "text", lockedMode, initialPresetId
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mode, prompt, tier, size: "portrait", sourcePath, presetId, presetValues: values, audience, detail }),
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error ?? t.errors.generic);
+      const responseType = response.headers.get("content-type") ?? "";
+      const data = responseType.includes("application/json") ? await response.json() : null;
+      if (!response.ok) {
+        throw new Error(data?.error ?? `Generation service returned ${response.status}. Please try again.`);
+      }
+      if (!data?.id) throw new Error(t.errors.generic);
       setResult({ id: data.id, status: data.status === "completed" ? "processing" : data.status, failMsg: null });
       notifyCreditBalanceChanged();
       void refreshMe();

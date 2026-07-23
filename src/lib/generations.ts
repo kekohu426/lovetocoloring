@@ -5,7 +5,6 @@ import { getTask } from "./imagegen";
 import { mirrorToStorage, resultPath, storageBuffer, uploadBuffer } from "./storage";
 import { releaseFreeGeneration } from "./device";
 import type { Generation } from "./types";
-import { extractDominantPalette, overlayBirthdayTitle } from "./image-processing";
 import { getPaletteOptions } from "./palettes";
 import { getScenario, sanitizeBirthdayText, type ScenarioId } from "./scenarios";
 
@@ -37,6 +36,7 @@ export async function completeGeneration(generation: Generation, resultUrls: str
 
   if (generation.presetId === "birthday" && generation.settingsJson) {
     try {
+      const { overlayBirthdayTitle } = await import("./image-processing");
       const values = JSON.parse(generation.settingsJson) as Record<string, string>;
       const named = await overlayBirthdayTitle(
         await storageBuffer(path),
@@ -51,6 +51,7 @@ export async function completeGeneration(generation: Generation, resultUrls: str
 
   if (generation.mode === "image" && generation.sourcePath) {
     try {
+      const { extractDominantPalette } = await import("./image-processing");
       const extracted = await extractDominantPalette(await storageBuffer(generation.sourcePath), 5);
       if (extracted.length >= 3) paletteOptions[0] = { ...paletteOptions[0], colors: extracted };
     } catch (error) {

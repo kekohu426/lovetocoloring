@@ -26,6 +26,7 @@ import {
 import { getPaletteOptions } from "@/lib/palettes";
 
 export const maxDuration = 60;
+export const runtime = "nodejs";
 
 const AUDIENCES: readonly ScenarioAudience[] = ["Kids & Family", "Classroom", "Adult Coloring"];
 const DETAILS: readonly ScenarioDetail[] = ["Simple", "Balanced", "Detailed"];
