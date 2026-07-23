@@ -198,14 +198,20 @@ function assignStages(
   });
 }
 
+/** Cap working resolution so dense mandalas stay within Vercel CPU/memory budgets. */
+const GUIDE_MAX_EDGE = 1024;
+
 export async function createRegionGuideSteps(
   lineInput: Buffer,
   colorInput: Buffer,
   paletteColors: string[],
 ): Promise<RegionGuideResult | null> {
   const meta = await sharp(colorInput).metadata();
-  const width = meta.width ?? 1024;
-  const height = meta.height ?? 1024;
+  const sourceWidth = meta.width ?? 1024;
+  const sourceHeight = meta.height ?? 1024;
+  const scale = Math.min(1, GUIDE_MAX_EDGE / Math.max(sourceWidth, sourceHeight));
+  const width = Math.max(1, Math.round(sourceWidth * scale));
+  const height = Math.max(1, Math.round(sourceHeight * scale));
   const [line, color] = await Promise.all([
     sharp(lineInput).resize(width, height, { fit: "fill" }).ensureAlpha().raw().toBuffer(),
     sharp(colorInput).resize(width, height, { fit: "fill" }).ensureAlpha().raw().toBuffer(),

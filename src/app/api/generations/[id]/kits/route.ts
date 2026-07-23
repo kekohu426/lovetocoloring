@@ -66,6 +66,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   await cradler.from<ColoringKit>(TABLES.coloringKits).update({ status: "processing", creditsSpent: spend.charged }).eq("id", kit.id);
 
   let stage = "coloring";
+  /** Dense mandalas often land below the ideal fill ratio; accept a usable result instead of hard-failing. */
+  const TARGET_COVERAGE = 0.72;
+  const MIN_ACCEPTABLE_COVERAGE = 0.45;
   try {
     const {
       createGuidePackage,
@@ -98,9 +101,18 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       const buffer = Buffer.from(await response.arrayBuffer());
       const coverage = await measureColorCoverage(line, buffer);
       if (!bestResult || coverage.ratio > bestResult.ratio) bestResult = { url: task.resultUrls[0], ratio: coverage.ratio };
-      if (coverage.ratio >= .72) break;
+      if (coverage.ratio >= TARGET_COVERAGE) break;
     }
-    if (!bestResult || bestResult.ratio < .72) throw new Error(`Color coverage was incomplete (${Math.round((bestResult?.ratio ?? 0) * 100)}%).`);
+    if (!bestResult || bestResult.ratio < MIN_ACCEPTABLE_COVERAGE) {
+      throw new Error(`Color coverage was incomplete (${Math.round((bestResult?.ratio ?? 0) * 100)}%).`);
+    }
+    if (bestResult.ratio < TARGET_COVERAGE) {
+      console.warn("Coloring kit accepting below-target coverage", {
+        kitId: kit.id,
+        ratio: bestResult.ratio,
+        target: TARGET_COVERAGE,
+      });
+    }
 
     stage = "saving colored artwork";
     const rawColoredPath = await mirrorToStorage(bestResult.url, kitPath(kit.id, "colored"));
@@ -111,6 +123,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     console.info("Coloring step engine completed", {
       kitId: kit.id,
       engine: guidePackage.engine,
+      coverage: bestResult.ratio,
       ...guidePackage.quality,
     });
     const stepPaths: string[] = [];
@@ -137,6 +150,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     console.error("Coloring kit generation failed", { kitId: kit.id, generationId: generation.id, stage, detail });
     await cradler.from<ColoringKit>(TABLES.coloringKits).update({ status: "failed", failMsg: message }).eq("id", kit.id);
     if (spend.charged > 0) await refundCredits(userId, spend.charged, kit.id);
-    return NextResponse.json({ error: "The coloring kit could not be generated. Your credit was refunded." }, { status: 502 });
+    return NextResponse.json({
+      error: "The coloring kit could not be generated. Your credit was refunded.",
+      code: "kit_failed",
+      stage,
+      detail,
+    }, { status: 502 });
   }
 }

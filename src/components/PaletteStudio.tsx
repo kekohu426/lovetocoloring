@@ -76,12 +76,15 @@ export function PaletteStudio({ generationId, mode, lineUrl, palettes, signedIn,
           setAvailableCredits(typeof data?.balance === "number" ? data.balance : 0);
           notifyCreditBalanceChanged();
         }
-        throw new Error(
+        const base =
           data?.error ??
-            (response.status >= 500
-              ? "The server could not create the coloring guide. Please try again."
-              : "Could not create the coloring kit."),
-        );
+          (response.status >= 500
+            ? "The server could not create the coloring guide. Please try again."
+            : "Could not create the coloring kit.");
+        const hint = typeof data?.detail === "string" && data.detail
+          ? ` (${data.stage ? `${data.stage}: ` : ""}${data.detail})`
+          : "";
+        throw new Error(`${base}${hint}`);
       }
       if (!data?.id) {
         throw new Error("The server returned an invalid response. Please try again.");

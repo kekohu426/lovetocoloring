@@ -216,19 +216,24 @@ export async function createGuidePackage(
   palette: PaletteOption,
   difficulty: GuideDifficulty = "guided",
 ): Promise<GuidePackage> {
-  const regionResult = await createRegionGuideSteps(lineInput, colorInput, palette.colors);
-  if (regionResult) {
-    return {
-      final: regionResult.final,
-      steps: regionResult.steps,
-      focusSteps: regionResult.focusSteps,
-      guide: regionGuideDocument(regionResult),
-      engine: "region-v3",
-      quality: {
-        regionCount: regionResult.regions.length,
-        enclosedPixelRatio: regionResult.enclosedPixelRatio,
-      },
-    };
+  try {
+    const regionResult = await createRegionGuideSteps(lineInput, colorInput, palette.colors);
+    if (regionResult) {
+      return {
+        final: regionResult.final,
+        steps: regionResult.steps,
+        focusSteps: regionResult.focusSteps,
+        guide: regionGuideDocument(regionResult),
+        engine: "region-v3",
+        quality: {
+          regionCount: regionResult.regions.length,
+          enclosedPixelRatio: regionResult.enclosedPixelRatio,
+        },
+      };
+    }
+  } catch (error) {
+    // Dense pages or missing native sharp binaries should still produce a usable kit.
+    console.error("Region guide engine failed; using palette fallback", error);
   }
 
   const fallbackSteps = await createPaletteFallbackSteps(lineInput, colorInput, palette);
