@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const config: NextConfig = {
+  outputFileTracingIncludes: {
+    "/api/generations/**": [
+      "./node_modules/@img/sharp-linux-x64/**/*",
+      "./node_modules/@img/sharp-libvips-linux-x64/**/*",
+    ],
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "r2.apimodels.app" },
