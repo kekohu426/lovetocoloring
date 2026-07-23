@@ -1,7 +1,6 @@
 import "server-only";
 import { cradler, TABLES } from "./cradler";
 import { getGeneration } from "./generations";
-import { createGuidePackage } from "./image-processing";
 import { parseStoredStepPaths } from "./kit-export";
 import { parsePaletteJson } from "./palettes";
 import { getScenario } from "./scenarios";
@@ -78,6 +77,7 @@ async function ensureGuideV3(kit: ColoringKit) {
     storageBuffer(generation.resultPath),
     storageBuffer(kit.coloredPath),
   ]);
+  const { createGuidePackage } = await import("./image-processing");
   const packageResult = await createGuidePackage(
     line,
     colored,
