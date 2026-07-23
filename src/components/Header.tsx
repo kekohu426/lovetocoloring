@@ -34,7 +34,9 @@ export async function Header({ locale }: { locale: Locale }) {
           {user ? <CreditBalance initialCredits={user.credits} initialUnlimited={isSubscribed(user)} creditsLabel={t.nav.credits} unlimitedLabel={t.generator.unlimited} href={localePath(locale, "/my-pages?view=credits")} /> : null}
           <span className="locale-label"><Globe2 size={15} />{locale.toUpperCase()}</span>
           <MobileNavMenu label={t.nav.menu} items={mainItems} />
-          {user ? <div className="header-account"><AuthButton signedIn labels={{ signIn: t.nav.signIn, signOut: t.nav.signOut }} /></div> : null}
+          <div className={`header-account${user ? "" : " header-account-signin"}`}>
+            <AuthButton signedIn={Boolean(user)} labels={{ signIn: t.nav.signIn, signOut: t.nav.signOut }} />
+          </div>
           {!user ? <Link className="header-cta" href={generatorHref(home, "text")}>Start creating <ArrowRight size={15} /></Link> : null}
         </div>
       </div>
