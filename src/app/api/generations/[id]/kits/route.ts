@@ -5,7 +5,6 @@ import { cradler, TABLES } from "@/lib/cradler";
 import { refundCredits, spendCredits } from "@/lib/credits";
 import { getDeviceId } from "@/lib/device";
 import { getGeneration } from "@/lib/generations";
-import { createGuidePackage, createSwatchImage, measureColorCoverage } from "@/lib/image-processing";
 import { createTask } from "@/lib/imagegen";
 import { findKitRequest, kitView, ownsGeneration } from "@/lib/kits";
 import { buildColoringPrompt, getPaletteOptions, type PaletteOption } from "@/lib/palettes";
@@ -14,6 +13,7 @@ import { kitPath, mirrorToStorage, publicUrl, storageBuffer, uploadBuffer } from
 import type { ColoringKit } from "@/lib/types";
 
 export const maxDuration = 120;
+export const runtime = "nodejs";
 
 function paletteOptions(value: string | null | undefined, presetId: string | null | undefined): PaletteOption[] {
   try {
@@ -67,6 +67,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
   let stage = "coloring";
   try {
+    const {
+      createGuidePackage,
+      createSwatchImage,
+      measureColorCoverage,
+    } = await import("@/lib/image-processing");
     const scenario = getScenario(generation.presetId);
     const lineUrl = await publicUrl(generation.resultPath);
     const line = await storageBuffer(generation.resultPath);

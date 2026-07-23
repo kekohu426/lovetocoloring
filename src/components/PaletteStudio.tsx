@@ -67,13 +67,24 @@ export function PaletteStudio({ generationId, mode, lineUrl, palettes, signedIn,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ paletteId: selected, clientRequestId: crypto.randomUUID() }),
       });
-      const data = await response.json();
+      const contentType = response.headers.get("content-type") ?? "";
+      const data = contentType.includes("application/json")
+        ? await response.json().catch(() => null)
+        : null;
       if (!response.ok) {
         if (response.status === 402) {
-          setAvailableCredits(typeof data.balance === "number" ? data.balance : 0);
+          setAvailableCredits(typeof data?.balance === "number" ? data.balance : 0);
           notifyCreditBalanceChanged();
         }
-        throw new Error(data.error ?? "Could not create the coloring kit.");
+        throw new Error(
+          data?.error ??
+            (response.status >= 500
+              ? "The server could not create the coloring guide. Please try again."
+              : "Could not create the coloring kit."),
+        );
+      }
+      if (!data?.id) {
+        throw new Error("The server returned an invalid response. Please try again.");
       }
       notifyCreditBalanceChanged();
       window.location.href = `/kits/${data.id}`;
