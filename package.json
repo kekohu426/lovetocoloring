@@ -24,6 +24,10 @@
     "stripe": "^22.3.2",
     "undici": "^8.8.0"
   },
+  "optionalDependencies": {
+    "@img/sharp-libvips-linux-x64": "1.2.4",
+    "@img/sharp-linux-x64": "0.34.5"
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.1.1",
