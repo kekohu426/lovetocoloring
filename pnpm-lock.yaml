@@ -11,6 +11,12 @@ importers:
       '@cradler/sdk':
         specifier: ^0.3.0
         version: 0.3.0
+      '@img/sharp-libvips-linux-x64':
+        specifier: 1.2.4
+        version: 1.2.4
+      '@img/sharp-linux-x64':
+        specifier: 0.34.5
+        version: 0.34.5
       jszip:
         specifier: ^3.10.1
         version: 3.10.1
@@ -66,13 +72,6 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
-    optionalDependencies:
-      '@img/sharp-libvips-linux-x64':
-        specifier: 1.2.4
-        version: 1.2.4
-      '@img/sharp-linux-x64':
-        specifier: 0.34.5
-        version: 0.34.5
 
 packages:
 
@@ -758,8 +757,7 @@ snapshots:
   '@img/sharp-libvips-linux-s390x@1.2.4':
     optional: true
 
-  '@img/sharp-libvips-linux-x64@1.2.4':
-    optional: true
+  '@img/sharp-libvips-linux-x64@1.2.4': {}
 
   '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
     optional: true
@@ -795,7 +793,6 @@ snapshots:
   '@img/sharp-linux-x64@0.34.5':
     optionalDependencies:
       '@img/sharp-libvips-linux-x64': 1.2.4
-    optional: true
 
   '@img/sharp-linuxmusl-arm64@0.34.5':
     optionalDependencies:
