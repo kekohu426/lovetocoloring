@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Colored dinosaur birthday page using a sunset garden palette</title>
+  <desc id="desc">Finished color reference using sage green, coral, golden yellow, sky blue, and plum.</desc>
+  <rect width="640" height="800" rx="32" fill="#fffaf2"/>
+  <g stroke="#1f2544" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M112 706h416" fill="none" stroke-width="6"/>
+    <path d="M410 196c20-45 72-45 88-4 18 47-38 87-82 111" fill="#ff8f7b"/>
+    <path d="M486 179c48-54 99-17 86 27-14 47-73 62-124 68" fill="#70c9c0"/>
+    <path d="M457 211c4-67-55-76-77-35-24 44 16 91 58 122" fill="#7d78d4"/>
+    <path d="M444 296v104" fill="none" stroke-width="5"/>
+    <path d="M320 160l-46 78h92z" fill="#ffca58"/>
+    <path d="M294 209l18-18 18 17 18-18" fill="none" stroke-width="5"/>
+    <path d="M194 546c-42 2-83-21-98-61-12-33-3-66 29-68 27-2 39 24 25 45-10 15-27 12-33 2" fill="#79b98b"/>
+    <path d="M211 399c-14-95 41-166 119-166 87 0 144 79 124 184-9 51-49 84-98 93l18 88h-75l-12-77-41 72h-76l63-104c-12-22-19-52-22-90z" fill="#94c69f"/>
+    <path d="M235 330c-43-15-79 12-77 52 2 42 41 58 84 42" fill="#d9efc8"/>
+    <circle cx="359" cy="318" r="8" fill="#1f2544" stroke="none"/>
+    <path d="M401 344c-18 17-45 21-65 8M334 261c-8-26 9-49 32-56M384 266c4-25 25-39 47-33M242 345c-23 7-31 25-28 45M251 466c-35 14-47 44-32 69M402 454c35 9 52 36 43 65M301 591l-18 65M374 598l19 58" fill="none"/>
+    <path d="M161 649h143v57H161z" fill="#ff8f7b"/><path d="M178 619h109v30H178z" fill="#fff1c7"/>
+    <path d="M202 619v-26M245 619v-29M214 591c0-12-12-16-12-28 0 12-12 16-12 28M257 589c0-12-12-16-12-28 0 12-12 16-12 28" fill="none" stroke-width="5"/>
+    <path d="M142 278l-21-18M155 241l-9-27M502 432l29-11M512 469l32 8M483 506l23 24M99 321l14 14 19-22 15 20M498 570l13 17 21-13 12 19" fill="none" stroke-width="5"/>
+  </g>
+</svg>

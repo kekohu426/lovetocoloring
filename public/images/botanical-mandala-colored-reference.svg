@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title desc">
+  <title id="title">Botanical mandala colored reference using a twilight palette</title>
+  <desc id="desc">Finished floral mandala reference colored with violet, coral, teal, cream, and deep navy.</desc>
+  <rect width="800" height="800" rx="34" fill="#fffaf2"/>
+  <g transform="translate(400 400)" stroke="#1f2544" stroke-width="6" stroke-linejoin="round">
+    <circle r="330" fill="#e5f5ee"/><circle r="270" fill="#fff0c7"/><circle r="184" fill="#ffd3ca"/><circle r="104" fill="#d8d5ff"/><circle r="42" fill="#70c9c0"/>
+    <g id="petalc">
+      <path d="M0-42C-34-82-27-126 0-158 27-126 34-82 0-42z" fill="#7d78d4"/>
+      <path d="M0-105C-52-150-48-212 0-258 48-212 52-150 0-105z" fill="#ff8f7b"/>
+      <path d="M0-184C-45-224-57-284 0-329 57-284 45-224 0-184z" fill="#50aa9d"/>
+      <path d="M0-258c-17 21-27 42-30 67M0-258c17 21 27 42 30 67" fill="none" stroke-width="4"/>
+    </g>
+    <use href="#petalc" transform="rotate(45)"/><use href="#petalc" transform="rotate(90)"/><use href="#petalc" transform="rotate(135)"/><use href="#petalc" transform="rotate(180)"/><use href="#petalc" transform="rotate(225)"/><use href="#petalc" transform="rotate(270)"/><use href="#petalc" transform="rotate(315)"/>
+    <g id="leafc"><path d="M38-55c44-16 78 7 91 38-38 13-75-4-91-38z" fill="#b7db8c"/><path d="M70-47l34 20" fill="none" stroke-width="4"/></g>
+    <use href="#leafc" transform="rotate(45)"/><use href="#leafc" transform="rotate(90)"/><use href="#leafc" transform="rotate(135)"/><use href="#leafc" transform="rotate(180)"/><use href="#leafc" transform="rotate(225)"/><use href="#leafc" transform="rotate(270)"/><use href="#leafc" transform="rotate(315)"/>
+    <circle r="16" fill="#1f2544"/>
+  </g>
+</svg>

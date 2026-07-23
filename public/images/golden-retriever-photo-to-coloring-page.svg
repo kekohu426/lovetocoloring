@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Golden retriever photo converted into a coloring page</title>
+  <desc id="desc">Clean black and white printable line art of a golden retriever with simplified garden details.</desc>
+  <rect width="640" height="800" rx="32" fill="#fff"/>
+  <g fill="none" stroke="#1f2544" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M227 282c-54-77-118-48-111 31 4 47 42 81 98 103M413 282c54-77 118-48 111 31-4 47-42 81-98 103"/>
+    <path d="M186 419c0-127 56-221 134-221s134 94 134 221c0 70-37 119-68 144 53 44 75 111 75 177H179c0-66 22-133 75-177-31-25-68-74-68-144z"/>
+    <path d="M250 444c0-64 29-104 70-104s70 40 70 104c0 54-31 90-70 90s-70-36-70-90z"/>
+    <circle cx="271" cy="383" r="9" fill="#1f2544" stroke="none"/><circle cx="369" cy="383" r="9" fill="#1f2544" stroke="none"/>
+    <path d="M293 441q27 25 54 0" fill="#1f2544"/><path d="M320 465v25M320 490c-19 19-41 17-54 1M320 490c19 19 41 17 54 1M241 614c30 35 128 35 158 0M222 690h196"/>
+    <path d="M76 676c-2-44 35-73 69-59 24 10 27 39 10 56M511 674c-20-42 12-79 49-68 29 8 34 40 16 62" stroke-width="6"/>
+    <path d="M106 612l-14-33M538 603l16-31M97 285c-38-30-69-10-61 26 5 24 27 36 58 34M542 322c42-24 73 1 59 35-10 23-35 30-66 21" stroke-width="6"/>
+  </g>
+</svg>

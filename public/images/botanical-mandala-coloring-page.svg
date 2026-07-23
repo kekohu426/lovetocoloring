@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title desc">
+  <title id="title">Detailed botanical mandala coloring page for adults</title>
+  <desc id="desc">Symmetrical black and white floral mandala with layered petals and leaves for adult coloring.</desc>
+  <rect width="800" height="800" rx="34" fill="#fff"/>
+  <g transform="translate(400 400)" fill="none" stroke="#1f2544" stroke-width="6" stroke-linejoin="round">
+    <circle r="42"/><circle r="104"/><circle r="184"/><circle r="270"/><circle r="330" stroke-width="4"/>
+    <g id="petal">
+      <path d="M0-42C-34-82-27-126 0-158 27-126 34-82 0-42z"/>
+      <path d="M0-105C-52-150-48-212 0-258 48-212 52-150 0-105z"/>
+      <path d="M0-184C-45-224-57-284 0-329 57-284 45-224 0-184z"/>
+      <path d="M0-258c-17 21-27 42-30 67M0-258c17 21 27 42 30 67" stroke-width="4"/>
+    </g>
+    <use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/><use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+    <g id="leaf"><path d="M38-55c44-16 78 7 91 38-38 13-75-4-91-38z"/><path d="M70-47l34 20" stroke-width="4"/></g>
+    <use href="#leaf" transform="rotate(45)"/><use href="#leaf" transform="rotate(90)"/><use href="#leaf" transform="rotate(135)"/><use href="#leaf" transform="rotate(180)"/><use href="#leaf" transform="rotate(225)"/><use href="#leaf" transform="rotate(270)"/><use href="#leaf" transform="rotate(315)"/>
+    <circle r="16" fill="#1f2544"/>
+  </g>
+</svg>

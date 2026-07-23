@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Golden retriever portrait photo example</title>
+  <desc id="desc">Warm illustrated portrait of a golden retriever sitting in a sunny garden.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bfe6df"/><stop offset="1" stop-color="#fff1bd"/></linearGradient></defs>
+  <rect width="640" height="800" rx="32" fill="url(#bg)"/>
+  <circle cx="94" cy="126" r="44" fill="#fff" opacity=".55"/><circle cx="535" cy="208" r="72" fill="#fff" opacity=".4"/>
+  <path d="M0 590c123-76 234-35 328 4 104 44 205 27 312-48v254H0z" fill="#8ec79a"/>
+  <g stroke="#684b39" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M227 282c-54-77-118-48-111 31 4 47 42 81 98 103" fill="#c9894f"/>
+    <path d="M413 282c54-77 118-48 111 31-4 47-42 81-98 103" fill="#c9894f"/>
+    <path d="M186 419c0-127 56-221 134-221s134 94 134 221c0 70-37 119-68 144 53 44 75 111 75 177H179c0-66 22-133 75-177-31-25-68-74-68-144z" fill="#e4a85f"/>
+    <path d="M250 444c0-64 29-104 70-104s70 40 70 104c0 54-31 90-70 90s-70-36-70-90z" fill="#f4cd92"/>
+    <circle cx="271" cy="383" r="9" fill="#36291f" stroke="none"/><circle cx="369" cy="383" r="9" fill="#36291f" stroke="none"/>
+    <path d="M293 441q27 25 54 0" fill="#382b21"/><path d="M320 465v25M320 490c-19 19-41 17-54 1M320 490c19 19 41 17 54 1" fill="none"/>
+    <path d="M241 614c30 35 128 35 158 0" fill="none"/><path d="M222 690h196" fill="none"/>
+  </g>
+</svg>
